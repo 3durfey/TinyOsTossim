@@ -11,7 +11,7 @@ docker build -t tinyos-ubuntu16 -f dockerFileUbunto16 .
 ## Run Docker Container
 
 ```sh
-docker run -it --name tinyos-container 64859f61a7e4 /bin/bash
+docker run -it --name tinyos-container [imageHash] /bin/bash
 ```
 
 ## Navigate to the Blink Application
