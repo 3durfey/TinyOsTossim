@@ -1,35 +1,42 @@
-TinyOS Docker Setup and Simulation
+# TinyOS Ubuntu 16 Simulation Setup
 
-Building the Docker Image
+This guide provides step-by-step instructions to build and run the TinyOS simulation using Docker.
 
-Build the TinyOS Docker image:
+## Build Docker Image
 
+```sh
 docker build -t tinyos-ubuntu16 -f dockerFileUbunto16 .
+```
 
-Running the Docker Container
+## Run Docker Container
 
-Run the container with interactive mode:
-
+```sh
 docker run -it --name tinyos-container 64859f61a7e4 /bin/bash
+```
 
-Compiling and Running the Blink Simulation
+## Navigate to the Blink Application
 
-Navigate to the Blink application directory:
-
+```sh
 cd /opt/tinyos-main/apps/Blink
+```
 
-Compile the simulation:
+## Compile for Micaz Simulation
 
+```sh
 make micaz sim
+```
 
-Creating the Simulation Script
+## Create `blink-sim.py` Script
 
-Open blink-sim.py using Nano:
+Use `nano` to create the simulation script:
 
+```sh
 nano blink-sim.py
+```
 
-Add the following script:
+Paste the following content into `blink-sim.py`:
 
+```python
 from TOSSIM import *
 import sys
 
@@ -56,14 +63,16 @@ t.getNode(1).bootAtTime(100000)
 # Run simulation events
 for i in range(1000):
     t.runNextEvent()
+```
 
-Save and exit Nano (CTRL + X, then Y, then Enter).
+Save the file and exit (`Ctrl + X`, then `Y`, then `Enter`).
 
-Running the Simulation
+## Run the Simulation
 
-Execute the simulation script:
-
+```sh
 python2 blink-sim.py
+```
 
-This will run the Blink simulation inside the TinyOS Docker container. 🚀
+---
 
+This will execute the Blink simulation in the TOSSIM environment.
