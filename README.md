@@ -1,6 +1,6 @@
 # TinyOS Ubuntu 16 Simulation Setup
 
-This guide provides step-by-step instructions to build and run the TinyOS simulation using Docker.
+This guide provides step-by-step instructions to build and run the TinyOS simulation using Docker. it uses the Docker file named dockerFileUbunto16 included in this repository.
 
 ## Build Docker Image
 
