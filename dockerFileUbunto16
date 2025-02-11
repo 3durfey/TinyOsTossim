@@ -1,0 +1,65 @@
+# Use Ubuntu 16.04 as base image
+FROM --platform=linux/amd64 ubuntu:16.04
+
+# Set non-interactive mode to prevent installation prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install required dependencies
+RUN apt update && apt install -y \
+    build-essential \
+    gcc \
+    gperf \
+    g++ \
+    make \
+    perl \
+    python \
+    python-dev \
+    python-pip \
+    python3 \
+    python3-pip \
+    default-jre \
+    default-jdk \
+    git \
+    bison \
+    flex \
+    graphviz \
+    wget \
+    unzip \
+    nano \
+    vim \
+    automake \
+    libtool \
+    libc6-dev \
+    autoconf \
+    pkg-config \
+    emacs \
+    software-properties-common \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install GCC 4.8
+RUN add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+    apt update && \
+    apt install -y gcc-4.8 g++-4.8 && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set GCC 4.8 as the default compiler
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100 && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 100
+
+# Install nesC compiler (nescc)
+WORKDIR /opt
+RUN git clone https://github.com/tinyos/nesc.git /opt/nesc && \
+    cd /opt/nesc && ./Bootstrap && ./configure && make && make install
+
+# Clone TinyOS
+WORKDIR /opt
+RUN git clone https://github.com/tinyos/tinyos-main.git
+
+# Install TinyOS tools properly
+WORKDIR /opt/tinyos-main/tools
+RUN ./Bootstrap && ./configure && make && make install
+
+
+
+# Default command when container starts
+CMD ["/bin/bash"]
