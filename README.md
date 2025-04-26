@@ -76,3 +76,18 @@ python2 blink-sim.py
 ---
 
 This will execute the Blink simulation in the TOSSIM environment.
+
+Java Setup
+
+If you would like to use Java in this environment, you will need an older version of the JDK.
+
+Please download JDK 1.5.0_22 from the Oracle Java Archive:
+
+🔗 Oracle Java SE 5 Archive Download
+
+Download the following file:
+	•	jdk-1_5_0_22-linux-amd64.bin
+
+Then:
+	1.	Move the downloaded .bin file into your Docker container or project directory.
+	2.	Inside the container, unzip and execute the file to install the JDK.
