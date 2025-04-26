@@ -83,8 +83,7 @@ If you would like to use Java in this environment, you will need an older versio
 
 Please download JDK 1.5.0_22 from the Oracle Java Archive:
 
-🔗 Oracle Java SE 5 Archive Download
-
+[ Oracle Java SE 5 Archive Download](https://www.oracle.com/java/technologies/java-archive-javase5-downloads.html)
 Download the following file:
 	•	jdk-1_5_0_22-linux-amd64.bin
 
